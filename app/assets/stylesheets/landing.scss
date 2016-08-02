@@ -38,3 +38,9 @@ h1 {
   margin: 20px 10px;
   flex: 0 0 280px;
 }
+
+@media all and (max-width: 1199px) {
+  .features {
+    max-width: 600px;
+  }
+}
