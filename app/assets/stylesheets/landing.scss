@@ -1,0 +1,40 @@
+.background {
+  background-image: asset-url("mac.jpeg");
+  height: calc(100vh - 52px);
+  width: 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 50px;
+  color: white;
+}
+
+.feature-title {
+  margin: 20px 10px;
+  flex: 0 0 280px;
+  color: black;
+}
+
+.features-container {
+  margin: 50px 0;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 50px auto;
+  justify-content: center;
+}
+
+
+.feature {
+  margin: 20px 10px;
+  flex: 0 0 280px;
+}
