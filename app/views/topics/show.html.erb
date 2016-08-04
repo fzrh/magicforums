@@ -1,0 +1,8 @@
+<div class="container topics">
+  <h1><%= @topic.title %></h1>
+  <p><%= @topic.description %></p>
+  <div class="btn-group">
+    <%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-warning btn-sm" %>
+    <%= link_to "Delete", topic_path(@topic), method: :delete, data: { confirm: "Delete?" }, class: "btn btn-danger btn-sm" %>
+  </div>
+</div>
