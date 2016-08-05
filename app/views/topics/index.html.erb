@@ -2,10 +2,11 @@
   <h1>Topics</h1>
 
   <% @topics.each do |topic| %>
-    <div class="topic">
+    <div class="topic text-center">
       <h3><%= topic.title %></h3>
       <h5><%= topic.description %></h5>
-      <%= link_to topic.title, topic_posts_path(topic) %>
+      <%= link_to "Go To Post", topic_posts_path(topic), class: "btn btn-link" %> |
+      <%= link_to "Edit", edit_topic_path(topic), class: "btn btn-link" %>
     </div>
   <% end %>
 </div>

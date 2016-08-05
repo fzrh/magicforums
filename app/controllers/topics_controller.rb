@@ -27,7 +27,7 @@ class TopicsController < ApplicationController
   def update
     @topic = Topic.find(params[:id])
     if @topic.update(topic_params)
-      redirect_to topic_path(@topic)
+      redirect_to topics_path
     else
       redirect_to edit_topic_path(@topic)
     end
