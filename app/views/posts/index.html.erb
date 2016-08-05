@@ -5,7 +5,8 @@
     <div class="post text-center">
       <h3><%= post.title %></h3>
       <h5><%= post.body %></h5>
-      <%= link_to post.title, topic_post_path(@topic, post) %>
+      <%= link_to "Go to Post", topic_post_path(@topic, post), class: "btn btn-link" %>
+      <%= link_to "Edit", edit_topic_post_path(@topic, post), class: "btn btn-link" %>
     </div>
   <% end %>
 
