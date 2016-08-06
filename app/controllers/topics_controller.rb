@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
     if @topic.save
-      redirect_to topic_path(@topic)
+      redirect_to topic_posts_path(@topic)
     else
       render :new
     end
@@ -27,9 +27,9 @@ class TopicsController < ApplicationController
   def update
     @topic = Topic.find(params[:id])
     if @topic.update(topic_params)
-      redirect_to topics_path
+      redirect_to topic_posts_path(@topic)
     else
-      redirect_to edit_topic_path(@topic)
+      redirect_to :edit
     end
   end
 
@@ -38,12 +38,11 @@ class TopicsController < ApplicationController
     if @topic.destroy
       redirect_to topics_path
     else
-      redirect_to topic_path(@topic)
+      redirect_to topic_posts_path(@topic)
     end
   end
 
   private
-
     def topic_params
       params.require(:topic).permit(:title, :description)
     end
