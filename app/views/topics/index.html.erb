@@ -2,14 +2,15 @@
   <h1>Topics</h1>
 
   <% @topics.each do |topic| %>
-    <div class="topic text-center">
-      <h3><%= topic.title %></h3>
-      <h5><%= topic.description %></h5>
-      <div class="btn btn-group">
-        <%= link_to "Edit", edit_topic_path(topic), class: "btn btn-warning btn-sm" %>
-        <%= link_to "Delete", topic_path(topic), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+    <%= link_to topic_posts_path(topic) do %>
+      <div class="topic text-center">
+        <h3><%= topic.title %></h3>
+        <h5><%= topic.description %></h5>
+        <div class="btn btn-group">
+          <%= link_to "Edit", edit_topic_path(topic), class: "btn btn-warning btn-sm" %>
+          <%= link_to "Delete", topic_path(topic), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+        </div>
       </div>
-      <%= link_to "See Posts", topic_posts_path(topic), class: "btn btn-primary btn-sm" %>
-    </div>
+    <% end %>
   <% end %>
 </div>
