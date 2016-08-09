@@ -14,7 +14,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "New Topic", new_topic_path %></li>
         <li><%= link_to "Topics", topics_path %></li>
-        <li><a href="#">Log In<span class="sr-only">(current)</span></a></li>
+        <% if current_user %>
+          <li class="text-strong text-underline"><%= link_to current_user.username, edit_user_path(current_user) %></li>
+          <li><%= link_to "Logout", session_path(current_user), method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Register", new_user_path %></li>
+          <li><%= link_to "Login", new_session_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>
