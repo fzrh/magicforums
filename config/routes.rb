@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
   resources :users, except: [:index, :show, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
+  resources :password_resets, only: [:new, :create, :edit, :destroy]
 end
