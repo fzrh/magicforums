@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  enum role: [:user, :moderator, :admin]
 
   RESERVED_NAMES = %w{ logout login register signup activate verify forgot reset resend_activation         verifying about terms unsubscribe account users session admin }
 
