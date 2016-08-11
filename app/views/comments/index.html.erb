@@ -2,19 +2,18 @@
   <h1><%= @post.title %>'s Comments</h1>
 
   <% if @comments.any? %>
-    <% @comments.each do |comment| %>
-      <div class="comment text-center">
-        <h5><%= comment.body %></h5>
-        <div class="btn btn-group">
-          <%= link_to "Edit Comment", edit_topic_post_comment_path(@post.topic, @post, comment), class: "btn btn-warning btn-sm" %>
-          <%= link_to "Delete Comment", topic_post_comment_path(@post.topic, @post, comment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
-        </div>
-      </div>
-    <% end %>
+    <div id="comments">
+      <% @comments.each do |comment| %>
+        <%= render partial: "comment", locals: { comment: comment, post: @post } %>
+      <% end %>
+    </div>
   <% else %>
     <p>No comments. Add one?</p>
   <% end %>
 
+  <div id="comments-form-container">
+    <%= render partial: "comment_form", locals: { comment: @comment, post: @post } %>
+  </div>
+
   <%= link_to "Back To Topic", topic_posts_path(@topic), class: "btn btn-default" %>
-  <%= link_to "New Comment", new_topic_post_comment_path, class: "btn btn-primary" %>
 </div>
