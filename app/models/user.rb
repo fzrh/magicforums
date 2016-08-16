@@ -3,6 +3,7 @@ class User < ApplicationRecord
   enum role: [:user, :moderator, :admin]
 
   has_many :comments, dependent: :destroy
+  has_many :votes, dependent: :destroy
 
   RESERVED_NAMES = %w{ logout login register signup activate verify forgot reset resend_activation         verifying about terms unsubscribe account users session admin }
 

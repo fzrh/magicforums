@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   resources :users, except: [:index, :show, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :destroy]
+
+  post :upvote, to: 'votes#upvote'
+  post :downvote, to: 'votes#downvote'
 end
