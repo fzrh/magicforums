@@ -10,7 +10,7 @@
   <% if @comments.any? %>
     <div id='comments'>
       <% @comments.each do |comment| %>
-        <%= render partial: 'comment', locals: { comment: comment, post: comment.post, current_user: comment.user, extra_class: '' } %>
+        <%= render partial: 'comment', locals: { comment: comment, post: comment.post, current_user: comment.user } %>
       <% end %>
     </div>
   <% else %>
