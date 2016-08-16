@@ -1,19 +1,21 @@
-<div class="container comments">
+<div class="container comments" data-id="<%= @post.id %>">
   <h1><%= @post.title %>'s Comments</h1>
 
   <% if @comments.any? %>
     <div id="comments">
       <% @comments.each do |comment| %>
-        <%= render partial: "comment", locals: { comment: comment, post: @post } %>
+        <%= render partial: "comment", locals: { comment: comment, post: comment.post, current_user: comment.user, extra_class: "" } %>
       <% end %>
     </div>
   <% else %>
     <p>No comments. Add one?</p>
   <% end %>
 
-  <div id="comments-form-container">
-    <%= render partial: "comment_form", locals: { comment: @comment, post: @post } %>
-  </div>
+  <% if current_user %>
+    <div id="comments-form-container">
+      <%= render partial: "comment_form", locals: { comment: @comment, post: @post } %>
+    </div>
+  <% end %>
 
-  <%= link_to "Back To Topic", topic_posts_path(@topic), class: "btn btn-default" %>
+  <div class=""></div>
 </div>
