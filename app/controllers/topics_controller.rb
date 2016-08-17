@@ -37,7 +37,7 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    @topic = Topic.find_by(id: params[:id])
+    @topic = Topic.find(params[:id])
     if @topic.destroy
       redirect_to topics_path
     else

@@ -2,14 +2,14 @@ class CommentsController < ApplicationController
   respond_to :js
 
   def index
-    @post = Post.includes(:comments).find_by(id: params[:post_id])
+    @post = Post.includes(:comments).find(params[:post_id])
     @topic = @post.topic
     @comments = @post.comments.order("created_at DESC")
     @comment = Comment.new
   end
 
   def create
-    @post = Post.find_by(id: params[:post_id])
+    @post = Post.find(params[:post_id])
     @topic = @post.topic
     @comment = current_user.comments.build(comment_params.merge(post_id: params[:post_id]))
     @new_comment = Comment.new

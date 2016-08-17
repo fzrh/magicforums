@@ -1,9 +1,12 @@
 class User < ApplicationRecord
   has_secure_password
-  enum role: [:user, :moderator, :admin]
 
+  enum role: [:user, :moderator, :admin]
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
+
+  extend FriendlyId
+  friendly_id :username, use: :slugged
 
   RESERVED_NAMES = %w{ logout login register signup activate verify forgot reset resend_activation         verifying about terms unsubscribe account users session admin }
 
