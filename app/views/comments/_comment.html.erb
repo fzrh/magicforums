@@ -14,12 +14,12 @@
 
       <% if current_user %>
         <div class='voting-controls'>
-          <%= link_to upvote_path({ comment_id: comment.id }), method: :post, remote: true do %>
-            <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
+          <%= link_to upvote_path({comment_id: comment.id}), method: :post, remote: true do %>
+            <i class='fa fa-thumbs-o-up fa-lg' aria-hidden='true'></i>
           <% end %>
           <span> / </span>
-          <%= link_to downvote_path({ comment_id: comment.id }), method: :post, remote: true do %>
-            <i class="fa fa-thumbs-o-down fa-lg" aria-hidden="true"></i>
+          <%= link_to downvote_path({comment_id: comment.id}), method: :post, remote: true do %>
+            <i class='fa fa-thumbs-o-down fa-lg' aria-hidden='true'></i>
           <% end %>
         </div>
       <% end %>
