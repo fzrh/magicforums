@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @topic = Topic.includes(:posts).find(params[:topic_id])
+    @topic = Topic.includes(:posts).friendly.find(params[:topic_id])
     @posts = @topic.posts.order("created_at DESC")
   end
 
@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.friendly.find(params[:topic_id])
     @post = Post.new(post_params.merge(topic_id: params[:topic_id]))
 
     if @post.save
@@ -21,13 +21,13 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
     @topic = @post.topic
   end
 
   def update
     @topic = @post.topic
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
 
     if @post.update(post_params)
       redirect_to topic_posts_path(@topic)
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
     @topic = @post.topic
 
     if @post.destroy
