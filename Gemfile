@@ -24,6 +24,7 @@ gem 'friendly_id', github: 'norman/friendly_id'
 
 group :development, :test do
   gem 'pry'
+  gem 'byebug'
 end
 
 group :development do
