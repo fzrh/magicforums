@@ -8,6 +8,7 @@ votesChannelFunctions = () ->
       console.log('Cast your vote!')
     disconnected: () ->
     received: (data) ->
+      console.log(data)
       $(".comment[data-id=#{data.comment_id}] .voting-score").html(data.value)
 
 $(document).on 'turbolinks:load', votesChannelFunctions
