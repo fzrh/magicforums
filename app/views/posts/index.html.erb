@@ -1,5 +1,6 @@
 <div class="container posts">
   <h1><%= @topic.title %>'s Posts</h1>
+  <h4><%= @topic.description %></h4>
 
   <% @posts.each do |post| %>
     <%= link_to topic_post_comments_path(@topic, post) do %>

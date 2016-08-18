@@ -5,14 +5,13 @@ class PostsController < ApplicationController
   end
 
   def new
-    @topic = Topic.find(params[:topic_id])
+    @topic = Topic.friendly.find(params[:topic_id])
     @post = Post.new
   end
 
   def create
     @topic = Topic.friendly.find(params[:topic_id])
-    @post = Post.new(post_params.merge(topic_id: params[:topic_id]))
-
+    @post = Post.new(post_params.merge(topic_id: @topic.id))
     if @post.save
       redirect_to topic_posts_path(@topic)
     else
@@ -26,8 +25,8 @@ class PostsController < ApplicationController
   end
 
   def update
-    @topic = @post.topic
     @post = Post.friendly.find(params[:id])
+    @topic = @post.topic
 
     if @post.update(post_params)
       redirect_to topic_posts_path(@topic)
